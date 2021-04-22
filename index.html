@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paint</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="mask"></div>
+    <div id="paint"></div>
+    <div class="content">
+      <div class="p1"></div>
+      <div class="middle">
+        <div class="bg"></div>
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div class="line4"></div>
+      </div>
+      <div class="right-part">
+        <div class="wan right-wan"></div>
+        <div class="arm-container">
+          <div class="arm right-arm1">
+            <div class="pie1"></div>
+            <div class="pie2"></div>
+            <div class="pie3"></div>
+            <div class="trapezoid"></div>
+            <div class="cylinder"></div>
+            <div class="base"></div>
+          </div>
+          <div class="arm right-arm2">
+            <div class="pie1"></div>
+            <div class="pie2"></div>
+            <div class="pie3"></div>
+            <div class="trapezoid"></div>
+            <div class="cylinder"></div>
+            <div class="base"></div>
+          </div>
+        </div>
+        <div class="seat">
+          <div class="top dot"></div>
+          <div class="bottom dot"></div>
+        </div>
+        <div class="hat-container">
+          <div class="hat right-hat1">
+            <div class="hat-head"></div>
+            <div class="hat-hat"></div>
+          </div>
+          <div class="hat right-hat2">
+            <div class="hat-head"></div>
+            <div class="hat-hat"></div>
+          </div>
+        </div>
+      </div>
+      <div class="p1-1"></div>
+      <div class="p1-2"></div>
+      <div class="pipes">
+        <div class="pipe1"></div>
+        <div class="pipe2"></div>
+        <div class="pipe3"></div>
+        <div class="pipe4"></div>
+        <div class="pipe5"></div>
+        <div class="pipe6"></div>
+        <div class="pipe7"></div>
+        <div class="pipe8"></div>
+        <div class="pipe9"></div>
+        <div class="pipe10"></div>
+        <div class="pipe11"></div>
+        <div class="pipe12"></div>
+      </div>
+      <div class="p2"></div>
+      <div class="light">
+        <span></span>
+      </div>
+      <div class="p3"></div>
+      <div class="p4">
+        <div class="p4a"></div>
+        <div class="p4b"></div>
+        <div class="p4c"></div>
+        <div class="p4d">
+          <div class="box1"></div>
+        </div>
+        <div class="p4e">
+          <div class="top"></div>
+          <div class="main"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p5"></div>
+    <div class="p6"></div>
+    <div class="buttons">
+      <button id="mask-btn">mask</button>
+    </div>
+    <script>
+      let mask = document.querySelector('.mask');
+      let maskBtn = document.querySelector('#mask-btn');
+      maskBtn.addEventListener('click', (e) => {
+        if (mask.style.visibility === 'hidden') {
+          mask.style.visibility = 'visible';
+        } else {
+          mask.style.visibility = 'hidden';
+        }
+      });
+    </script>
+  </body>
+</html>
