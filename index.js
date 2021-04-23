@@ -893,13 +893,13 @@ class CodePlayer {
     this.tempText = '';
   }
   __play__(isLineMode) {
-    if (this.index >= this.cssText.length - 1)return;//如果已经播放完毕，直接退出
-    
+    if (this.index > this.cssText.length - 1) return; //如果已经播放完毕，直接退出
     let alphaPlay = () => {
       let ch = this.cssText[this.index];
       this.styleEl.innerText += ch;
       this.container.innerText += ch;
       this.index++;
+      this.container.scrollBy({ top: 1000, behavior: 'instant' });
       if (this.index >= this.cssText.length - 1) {
         this.clearAnimation();
       }
@@ -928,6 +928,9 @@ class CodePlayer {
       behavior: 'instant'
     });
   }
+  __updateScroll__() {
+    this.container.scrollBy({ top: 9999, behavior: 'instant' });
+  }
   pause() {
     if (this.intervalId === -1) return;
     this.clearAnimation();
@@ -951,6 +954,7 @@ class CodePlayer {
   clearAnimation() {
     clearInterval(this.intervalId);
     this.intervalId = -1;
+    this.__updateScroll__();
   }
   changeSpeed(speed) {
     if (speed < 1) speed = 1;
@@ -970,6 +974,7 @@ class CodePlayer {
     const text = this.cssText.substring(0, length);
     this.styleEl.innerText = text;
     this.container.innerText = text;
+    this.__updateScroll__();
     if (isRunning) this.play();
   }
 }
@@ -982,24 +987,32 @@ let codePlayerComponent = {
   fastEl: document.querySelector('.fast'),
   slowEl: document.querySelector('.slow'),
   jumpEl: document.querySelector('.jump'),
-  process:20,
-  addProcess(){
+  process: 20,
+  addProcess() {
     this.cp.changeProcess(this.process);
-    if(this.process > 100)return;
+    if (this.process > 100) return;
     this.process += 20;
     this.updateJumpEl();
   },
-  resetProcess(){
+  resetProcess() {
     this.process = 20;
     this.updateJumpEl();
   },
-  updateJumpEl(){
-    if(this.process>100)return;
+  restart() {
+    this.resetProcess();
+    this.cp.restart();
+  },
+  updateJumpEl() {
+    if (this.process > 100) return;
     this.jumpEl.innerText = `to ${this.process}%`;
   },
-  init(container,cssText){
+  init(container, cssText) {
     this.cp = new CodePlayer(document, container, cssText);
     this.playEl.addEventListener('click', () => {
+      if (this.process > 100) {
+        this.restart();
+        return;
+      }
       this.cp.play();
     });
     this.pauseEl.addEventListener('click', () => {
@@ -1010,8 +1023,7 @@ let codePlayerComponent = {
       this.cp.stop();
     });
     this.restartEl.addEventListener('click', () => {
-      this.resetProcess();
-      this.cp.restart();
+      this.restart();
     });
     this.fastEl.addEventListener('click', () => {
       this.cp.changeSpeed(this.cp.speed + 10);
@@ -1026,5 +1038,4 @@ let codePlayerComponent = {
   }
 };
 
-
-codePlayerComponent.init(container,cssText);
+codePlayerComponent.init(container, cssText);

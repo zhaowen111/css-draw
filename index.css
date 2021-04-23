@@ -10,32 +10,19 @@ body {
   font-size: 20px;
 }
 body {
-  position: relative;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
 }
 
-.draw {
-  position: relative;
-  width: 33rem;
-  height: 13rem;
-}
-
-.draw-wrapper {
-  flex: 1;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .code-wrapper {
   flex: 1;
   padding: 1rem;
-  overflow-y: hidden;
-  position: relative;
+  height: 50%;
 }
 .code {
-  position: absolute;
-  bottom: 0;
+  overflow: hidden;
+  height: 100%;
 }
 .code-player {
   font-size: 20px;
@@ -53,30 +40,31 @@ body {
   margin: 0.5em;
   /* padding: 0.2em; */
 }
+
+.draw-wrapper {
+  flex: 1;
+  height: 50%;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.draw {
+  position: relative;
+  width: 33rem;
+  height: 13rem;
+}
+
+
 @media screen and (max-width:1000px){
   html {
     font-size: 16px;
   }
 }
 
-@media screen and (max-width:900px){
-  html {
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width:800px){
-  html {
-    font-size: 12px;
-  }
-}
-
 @media screen and (max-width:700px) {
   html {
     font-size: 14px;
-  }
-  body {
-    flex-direction: column-reverse;
   }
   .code-player {
     font-size: 14px;
@@ -85,5 +73,16 @@ body {
 @media screen and (max-width:600px) {
   html {
     font-size: 12px;
+  }
+}
+@media screen and (max-width:400px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width:300px) {
+  html {
+    font-size: 8px;
   }
 }
