@@ -21,7 +21,7 @@ body {
   height: 50%;
 }
 .code {
-  overflow: hidden;
+  overflow-y: hidden;
   height: 100%;
 }
 .code-player {
